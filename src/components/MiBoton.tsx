@@ -1,6 +1,7 @@
 
 import { Ionicons } from '@expo/vector-icons';
 import {
+  Alert,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -13,21 +14,32 @@ type Props = {
   onPress: () => void;
 };
 
-const MiBoton = ({
+export default function MiBoton({
   textoBoton,
   nombreIcono,
   colorBoton,
   onPress,
-}: Props) => {
+}: Props) {
+  const ejecutarAccion = () => {
+    if (typeof onPress === 'function') {
+      onPress();
+    } else {
+      Alert.alert('Aviso', 'No se encontró una acción para este botón.');
+    }
+  };
+
   return (
     <TouchableOpacity
-      style={[estilos.boton, { backgroundColor: colorBoton }]}
-      onPress={onPress}
-      activeOpacity={0.8}
+      style={[
+        estilos.boton,
+        { backgroundColor: colorBoton },
+      ]}
+      onPress={ejecutarAccion}
+      activeOpacity={0.6}
     >
       <Ionicons
         name={nombreIcono}
-        size={20}
+        size={22}
         color="#ffffff"
       />
 
@@ -36,9 +48,7 @@ const MiBoton = ({
       </Text>
     </TouchableOpacity>
   );
-};
-
-export default MiBoton;
+}
 
 const estilos = StyleSheet.create({
   boton: {

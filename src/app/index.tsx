@@ -2,6 +2,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import {
   Alert,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,13 +11,20 @@ import {
 
 import MiBoton from '../components/MiBoton';
 
-const inicio = () => {
+const mostrarAlerta = (titulo: string, mensaje: string) => {
+  if (Platform.OS === 'web') {
+    window.alert(`${titulo}\n\n${mensaje}`);
+  } else {
+    Alert.alert(titulo, mensaje);
+  }
+};
+
+export default function Inicio() {
   return (
     <ScrollView
       style={estilos.contenedor}
       contentContainerStyle={estilos.contenido}
     >
-      {/* Datos personales */}
       <View style={estilos.avatarContenedor}>
         <Ionicons
           name="person-circle"
@@ -33,7 +41,6 @@ const inicio = () => {
         </Text>
       </View>
 
-      {/* Perfil profesional */}
       <View style={estilos.seccion}>
         <Text style={estilos.subtitulo}>
           Perfil Profesional
@@ -46,19 +53,16 @@ const inicio = () => {
         </Text>
       </View>
 
-      {/* Información de contacto */}
       <View style={estilos.seccion}>
-        <Text style={estilos.subtitulo}>
-          Contacto
-        </Text>
+        <Text style={estilos.subtitulo}>Contacto</Text>
 
         <MiBoton
           textoBoton="Enviar Correo"
           nombreIcono="mail"
           colorBoton="#E86D64"
           onPress={() =>
-            Alert.alert(
-              'Contacto',
+            mostrarAlerta(
+              'Contacto por correo',
               'Correo: yobersond@gmail.com'
             )
           }
@@ -69,46 +73,41 @@ const inicio = () => {
           nombreIcono="call"
           colorBoton="#16A34A"
           onPress={() =>
-            Alert.alert(
-              'Contacto',
+            mostrarAlerta(
+              'Contacto telefónico',
               'Teléfono: 3143543522'
             )
           }
         />
 
         <MiBoton
-          textoBoton="LinkedIn"
-          nombreIcono="logo-linkedin"
-          colorBoton="#2563EB"
+          textoBoton="Repositorio Git"
+          nombreIcono="logo-github"
+          colorBoton="#171717"
           onPress={() =>
-            Alert.alert(
-              'LinkedIn',
-              'Actualmente no tengo perfil de LinkedIn.'
+            mostrarAlerta(
+              'Repositorio Git',
+              'Aquí puedes consultar mis proyectos y trabajos de programación. Agrega tu enlace de GitHub cuando lo tengas.'
             )
           }
         />
       </View>
     </ScrollView>
   );
-};
-
-export default inicio;
+}
 
 const estilos = StyleSheet.create({
   contenedor: {
     flex: 1,
     backgroundColor: '#f8fafc',
   },
-
   contenido: {
     padding: 20,
   },
-
   avatarContenedor: {
     alignItems: 'center',
     marginBottom: 20,
   },
-
   nombre: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -116,7 +115,6 @@ const estilos = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
-
   profesion: {
     fontSize: 16,
     color: '#2563eb',
@@ -124,7 +122,6 @@ const estilos = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
-
   seccion: {
     backgroundColor: '#ffffff',
     padding: 16,
@@ -132,14 +129,12 @@ const estilos = StyleSheet.create({
     marginBottom: 16,
     elevation: 1,
   },
-
   subtitulo: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#1e293b',
     marginBottom: 8,
   },
-
   parrafo: {
     fontSize: 14,
     color: '#475569',

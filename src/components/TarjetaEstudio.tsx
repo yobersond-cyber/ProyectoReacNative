@@ -12,13 +12,13 @@ const TarjetaEstudio = ({
   titulo,
   institucion,
   anio,
-  enCurso
+  enCurso,
 }: Props) => {
   return (
     <View
       style={[
         estilos.tarjeta,
-        enCurso ? estilos.enCurso : estilos.finalizado
+        enCurso ? estilos.enCurso : estilos.finalizado,
       ]}
     >
       <Text style={estilos.titulo}>{titulo}</Text>
@@ -53,18 +53,28 @@ const estilos = StyleSheet.create({
   titulo: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#172554',
+    marginBottom: 8,
   },
   subtitulo: {
     fontSize: 14,
     color: '#555555',
+    marginTop: 8,
   },
   anio: {
     fontSize: 12,
-    color: '#888888',
+    color: '#666666',
+    marginTop: 5,
   },
   badge: {
-    color: '#3366f1',
+    alignSelf: 'flex-start',
+    backgroundColor: '#7c3aed',
+    color: '#ffffff',
     fontWeight: 'bold',
     fontSize: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 20,
+    overflow: 'hidden',
   },
 });
