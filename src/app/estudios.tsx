@@ -23,16 +23,16 @@ export default function Estudios() {
       />
 
       <TarjetaEstudio
-        titulo="Bachillerato Académico"
-        institucion="Gerardo Paredes Martinez"
+        titulo="Tecnico en porgramacion se software"
+        institucion="SENA"
         anio={2025}
         enCurso={false}
       />
 
       <TarjetaEstudio
-        titulo="Educación Básica"
+        titulo="Bachillerato Académico"
         institucion="Gerardo Paredes Martinez"
-        anio={2019}
+        anio={2025}
         enCurso={false}
       />
     </ScrollView>

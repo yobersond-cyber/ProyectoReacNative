@@ -46,10 +46,10 @@ export default function Hobbies() {
       />
 
       <TarjetaHobby
-        nombre="Aprendizaje"
-        descripcion="Investigar y adquirir nuevos conocimientos."
-        detalle="Me interesa seguir aprendiendo y fortalecer mis conocimientos personales y profesionales."
-        icono="📚"
+        nombre="Deporte"
+        descripcion="Jugar a el futbol y seguir creciendo en mi esatdo fisico."
+        detalle="Me interesa jugar futbol y llevarlo mas alla de un hobby verlo como profesional."
+        icono="⚽"
       />
     </ScrollView>
   );
